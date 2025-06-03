@@ -5,7 +5,7 @@ Blanket term for any kind of death.
 Dying in combat.
 
 == Sacrifice
-Effects that specifically sacrifice, as well as devours and evolutions.
+Effects that specifically sacrifice, as well as being devoured.
 
 == Destroyed
 This is being phased out. Pick a fitting word from above.
