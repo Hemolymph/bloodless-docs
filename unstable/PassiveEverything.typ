@@ -10,34 +10,23 @@ Under this proposal, every part of the game would be capable of having its own l
 == Looping
 The main problem with passive modifications is infinite loops. Consider the following two effects:
 
-- Creatures with 1 health gain +1 power.
-- Creatures with 1 power gain +1 health.
++ Creatures with 1 health gain +1 power.
++ Creatures with 1 power gain +1 health.
 
 Let's consider a 1/0/0 creature.
 
-- Suppose we want to know a creature's power.
-- During checking the power, we find a modification cares about the health, so we check that first.
+- We want to know the creature's power.
+- During checking the power, we find a modification that cares about the health, so we check that first.
 - During checking the health, we find an modification that cares about power, so we check that first.
-- During checking the power, we find a modification cares about the health, so we check that first.
+- During checking the power, we find a modification that cares about the health, so we check that first.
 - This is an ability we've seen before, causing an infinite loop.
 
-Our proposed solution is to force looping points to return an unchanged state. The previous step would end up like this:
+Our proposed solution is to make it so that recursive "look at" operations do not happen. Instead, we start with a base, and apply all the effects in order each time we look at a number. The process ends up looking this way:
 
-- This is a loop, so we return a base health. It is a 1/0/0
-- Health is 1, so the creature gains +1 power. It is a 1/0/1
-- Power is 1, so the creature gains +1 health. it is a 2/0/1
-- Health is 2, so the power stays at 2.
-- The creature's power is 2.
+Let's say that the abilities here are ordered such that lower numbers have higher precedence.
 
-Now consider the case where we want to know its health.
+- We start with the base stats.
+- The first event adds 1 power to it. It is now a 1/0/1
+- The second event adds 1 health to it. It is now a 2/0/1
 
-- Suppose we want to know a creature's health.
-- During checking the health, we find a modification cares about the power, so we check that first.
-- During checking the power, we find an modification that cares about health, so we check that first.
-- During checking the health, we find a modification cares about the power, so we check that first.
-- This is an ability we've seen before, so we return base power. 1/0/0
-- Power is 0, so health is unchanged. 1/0/0
-- Health is 1, so power is changed. 1/0/1
-- Power is one, so health is changed. 2/0/1
 
-As you can see, the result is the same.
