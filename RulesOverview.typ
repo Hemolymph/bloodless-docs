@@ -25,7 +25,7 @@ There is no limit to how many cards your Main Deck can have, as long as you foll
 The space where Bloodless is played is divided in a few zones:
 
 #figure(
-  image("board.svg", width: 80%),
+  image("images/board.svg", width: 80%),
 )
 
 - The players' Hands: This is where you can play cards from. Cards in your hand are only known to you.
@@ -40,7 +40,7 @@ The Timeline is the zone where Commands are played.
 Most cards are structured like this:
 
 #figure(
-  image("bee.svg", width: 80%),
+  image("images/bee.svg", width: 80%),
 )
 
 At the very top of the card, is its name. This is a "Bee".
@@ -50,7 +50,7 @@ On the top right corner of its image, is its blood cost. If a card costs no bloo
 Below the image, the card's type line may appear. If there is no type line, the card is of type "Creature". You can read everything about types in the *Card Types* section. This Bee has no type line, so it is a Creature. A type line might look something like this:
 
 #figure(
-  image("typeline.png", width: 80%),
+  image("images/typeline.png", width: 80%),
 )
 
 Below the card's type line (or below the image, if there is no type line) is the card's text. The text in a card tells you what it does, including things like kins, keywords and "devours" or "evolves" conditions.
@@ -58,7 +58,7 @@ Below the card's type line (or below the image, if there is no type line) is the
 The lighter-colored text below the rules text is the flavor text, which is not considered part of the card's text at all, and doesn't affect the game in any way. The flavor text tells you more about a card's relation to the world and characters of Bloodless.
 
 #figure(
-  image("flavor.png", width: 80%),
+  image("images/flavor.png", width: 80%),
 )
 
 On creatures, the numbers at the bottom indicate its Health, Defense and Power. Power is how much damage your card does in a single strike, and Health is how much damage it can take before it dies. Defense is how much it can protect you from Overkill Damage, and will be explained in the *Card Types* section
