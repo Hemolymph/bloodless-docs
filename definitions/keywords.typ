@@ -32,7 +32,9 @@ This creature's strength is added to the number of creatures of its kin that are
 This creature's defense is added to the number of creatures of its kin that are in the board.
 
 == Explosive
-This creature attacks the space in front of it and, if they have creatures, the spaces to its side.
+#strike[This creature attacks the space in front of it and, if they have creatures, the spaces to its side.]
+
+This keyword is being phased out. Explicit descriptions will be used instead.
 
 == Cumulative
 When this [card] enters [play zone], it gains 1 'Accumulate' counter.
