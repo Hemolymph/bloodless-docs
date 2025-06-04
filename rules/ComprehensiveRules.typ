@@ -101,14 +101,14 @@ This chapter defines all types of values that are used to process a game of Bloo
   + While a card is in an owned zone, the owner of that zone is the card's "controller".
   + A card's owner is the player who controls it when the game begins, or when it is created.
   + Type Properties
-    + Creatures have Power, Defense and Strength. They also have an Attack, which consists of a pattern of relative directions to spaces in the Board.
+    + Creatures have Health, Defense and Power. They also have an Attack, which consists of a pattern of relative directions to spaces in the Board.
   + Variables
     + A number in a card may be variable. A variable is represented with a letter from the Latin or Greek alphabet. Variable numbers have two variants: Undefined and Defined. Their default state is Undefined.
     + All numbers in a card represented with the same letter are the same number.
     + The Defined variant of a variable number contains a natural integer. The Undefined variant contains no extra structure.
     + When the value of a number that is variable is needed and that number is in a Defined variant, the number it is Defined with is used.
     + When the value of a number that is variable is needed and that number is in its Undefined variant, one of the following can happen:
-      + If the same variable appears in the card's Cost, Power, Defense or Strength, it is zero.
+      + If the same variable appears in the card's Cost, Health, Defense or Power, it is zero.
       + Otherwise, the player chooses a value for it, following the restrictions specified on the card.
 + Places
   + A Places is a place where a card may be. A place may have at most one card.
