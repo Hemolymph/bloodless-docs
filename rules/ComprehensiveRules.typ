@@ -161,12 +161,16 @@ When a process moves to a step, that step is immediately executed, even if a chi
     + Outcome additionally contains the car that was drawn.
   + End of Turn
     + Does not contain anything.
-    + Changes active player for their opponent
+    + Changes active player so that it is now their opponent.
+    + Clears event queue.
     + Outcome contains the previous player.
   + Search
-    + TODO
+    + Contains the player who will do the search, the deck that will be searched, and the pattern to be matched.
+    + All cards in the deck become known to the player.
+    + The outcome contains the cards found to match. If the pattern cannot be matched, the player Fails To Find. This is _not_ a failure outcome for this event (e.g. the next event in a "then" chain will work fine).
   + Shuffle
-    + TODO
+    + Contains which deck is shuffled.
+    + Randomizes order of cards in a deck.
 + Creature Death Checks <creatureDeathChecks>
   + The active player's spaces  checked from left to right from their perspective. Then, the inactive player's, from left to right also from their perspective.
   + If one of the spaces has a creature with 0 health, process a "death" event for that creature.
