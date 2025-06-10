@@ -7,3 +7,5 @@ The `unstable` folder contains descriptions and possible definitions of features
 
 The `definitions` folder is used to keep track of lists of meanings that are not yet defined anywhere else, but should be. Ideally, each document in this folder will specify the reason why they are not documented in a more official place (like the comprehensive rules, or their own document, if the list needs to be accessible to the average player).
 
+The `community` folder contains rules regarding human interactions in Bloodless spaces.
+
