@@ -130,8 +130,11 @@ This chapter defines all types of values that are used to process a game of Bloo
     + Spawning, summoning, moving to board, where "creature" includes (but is not exclusive to) "creature cards".
     + Executing, moving to timeline, where "command" includes (but is not exclusive to) "command cards".
     + Playing, where "command" and "creature" include (but are not exclusive to) "command card" and "creature card" respectively.
-+ Turn Skips
-  + Every player has a number of turn skips.
++ Passive Abilities
+  + A Passive Ability modifies the state of a card and, importantly, undoes the modification when it's finished.
+  + In order to achieve this, a Passive Ability remembers the specific state change for everything that it modifies, if it has.
+  + Passive Abilities have an opposite operation.
+  + Passive Abilities may have a condition under which they apply.
 
 == Processes
 This section defines all processes in Bloodless. When playing a game of Bloodless, the Bloodless process is initiated.
@@ -178,6 +181,18 @@ When a process moves to a step, that step is immediately executed, even if a chi
   + If the health pool is zero, process a "finish game" event of with the player who last received player damage losing and their opponent.
 + Processing A Player's Turn Skips <turnSkipsProcess>
   + If the player has more than zero turn skips, do game end condition checks, Bloodless moves to step @turnEnd.
++ Applying Passive Abilities
+  + Every Passive Ability iterates through its targets.
+  + If the target passes the condition:
+    + If this Passive Ability is already modifying the target:
+      + If the modification to be done has changed, change the state accordingly.
+    + If this Passive Ability has not modified the target:
+      + Change the state accordingly
+  + If the target doesn't pass the condition:
+    + If this Passive Ability has not modified the target:
+      + Change the state accordingly
+    + If this Passive Ability is modifying the target:
+      + Modify the state oppositely
 + Resolving an Event
   + An ordered list of only the processed event is made. This is the current events list.
   + A new, empty ordered list of events is made. This is the future events list.
@@ -193,6 +208,7 @@ When a process moves to a step, that step is immediately executed, even if a chi
     + Apply the event to the current board state.
     + Apply each ECTA to the Outcome.
     + If the Outcome is of a Play-related event, process its next step.
+  + Apply passive abilities
   + Process game end condition checks. (see @gameEndChecks)
   + Process creature death checks. (see @creatureDeathChecks)
   + Process turn skips. (see @turnSkipsProcess)
