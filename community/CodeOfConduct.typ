@@ -1,5 +1,5 @@
 = The Bloodless Code Of Conduct
-The goal in Bloodless' community spaces, as well as any space moderated and owned by Katie Ampersand, is to provide a safe and welcoming environment for all, regardless of characteristics like level of experience, disabilities, gender identity and expression, sexual orientation, race, religion, among others.
+The goal in Bloodless' community spaces, as well as any space moderated and owned by Katie Ampersand, is to provide a safe and welcoming environment for all, regardless of characteristics like level of expertise, disabilities, gender identity and expression, sexual orientation, race, religion, among others.
 
 This document sets an overall tone for our community. It is not a rulebook defining a rigurous system by which a behavior can be classified as allowed or not allowed; instead, it is meant to be followed in spirit. Just because something isn't explicitly mentioned here, does not mean you are free to do it.
 
