@@ -96,6 +96,8 @@ This chapter defines all types of values that are used to process a game of Bloo
   + Rules Text is a list of Abilities or a list of Events.
 + Card
   + A card has: Name, Type, and Cost (a number which may be a variable).
+  + A card may have counters. A counter is a named numeric value. If a card does not have a counter of a certain Name, it is zero.
+  + Simlarly, if a card has zero of a counter, it is said to not have it.
   + A card may have a Flip Cost (a number which may be a variable).
   + There exist certain rules that apply only to cards of a certain Type.
   + While a card is in an owned zone, the owner of that zone is the card's "controller".
