@@ -112,8 +112,18 @@ This chapter defines all types of values that are used to process a game of Bloo
     + When the value of a number that is variable is needed and that number is in its Undefined variant, one of the following can happen:
       + If the same variable appears in the card's Cost, Health, Defense or Power, it is zero.
       + Otherwise, the player chooses a value for it, following the restrictions specified on the card.
++ Lists
+  + A list is a collection of various things of the same kind.
+  + Unordered Lists
+    + In an unordered list, there is no real sense of "first" or "last". It simply contains its objects.
+  + Ordered Lists
+    + In an ordered list, all elements have an index. The lowest index is the first element, and the highest index is the last element. All indexes are unique.<sortedListRule>
+    + Adding an item to the "back" of an ordered list simply adds an element whose index is one plus the current highest.
+    + Adding an item to the "front" of an ordered list adds 1 to all existing indexes and adds the new element with 0 as its index.
+    + Adding an item at a specific index adds 1 to all indexes greater than or equal to the desired index, then puts the element at that index.
+    + An ordered list can be shuffled, which consists of moving all elements to another index at random, respecting rule @sortedListRule.
 + Places
-  + A Places is a place where a card may be. A place may have at most one card.
+  + A Place is a location where a card may be. A place may have at most one card.
   + All Places have an owner.
   + Places are also linked by Zones. All spaces in a Zone have defined collective behavior with one another.
     + Discard Pile: An unordered list of cards.
