@@ -94,16 +94,12 @@ This chapter defines all types of values that are used to process a game of Bloo
     + TODO! write a list of all triggers
 + Rules Text
   + Rules Text is a list of Abilities or a list of Events.
-+ Card
-  + A card has: Name, Type, and Cost (a number which may be a variable).
-  + A card may have counters. A counter is a named numeric value. If a card does not have a counter of a certain Name, it is zero.
-  + Simlarly, if a card has zero of a counter, it is said to not have it.
-  + A card may have a Flip Cost (a number which may be a variable).
-  + There exist certain rules that apply only to cards of a certain Type.
-  + While a card is in an owned zone, the owner of that zone is the card's "controller".
-  + A card's owner is the player who controls it when the game begins, or when it is created.
++ Faces
+  + A Face may have a Name.
+  + A Face may have a Cost. This number may be variable.
+  + A Face may have Health, Defense and Power. These numbers may be variable.
   + Type Properties
-    + Creatures have Health, Defense and Power. They also have an Attack, which consists of a pattern of relative directions to spaces in the Board.
+    + Creatures must have Health, Defense and Power. They also have Combat Targets, which are relative directions to spaces on the board.
   + Variables
     + A number in a card may be variable. A variable is represented with a letter from the Latin or Greek alphabet. Variable numbers have two variants: Undefined and Defined. Their default state is Undefined.
     + All numbers in a card represented with the same letter are the same number.
@@ -112,6 +108,13 @@ This chapter defines all types of values that are used to process a game of Bloo
     + When the value of a number that is variable is needed and that number is in its Undefined variant, one of the following can happen:
       + If the same variable appears in the card's Cost, Health, Defense or Power, it is zero.
       + Otherwise, the player chooses a value for it, following the restrictions specified on the card.
+ + A Face may have a Flip Cost. This number may be variable.
++ Card
+  + A card has a main face, and a back face.
+  + A card's Name, Cost, Flip Cost, Health, Defense and Power are those of its main face.
+  + There exist certain rules that apply only to cards of a certain Type.
+  + While a card is in an owned zone, the owner of that zone is the card's "controller".
+  + A card's owner is the player who controls it when the game begins, or when it is created.
 + Lists
   + A list is a collection of various things of the same kind.
   + Unordered Lists
@@ -143,10 +146,14 @@ This chapter defines all types of values that are used to process a game of Bloo
     + Executing, moving to timeline, where "command" includes (but is not exclusive to) "command cards".
     + Playing, where "command" and "creature" include (but are not exclusive to) "command card" and "creature card" respectively.
 + Passive Abilities
-  + A Passive Ability modifies the state of a card and, importantly, undoes the modification when it's finished.
+  + A Passive Ability modifies the state of a card as long as a condition is met, and undoes it when the condition is unmet.
   + In order to achieve this, a Passive Ability remembers the specific state change for everything that it modifies, if it has.
-  + Passive Abilities have an opposite operation.
-  + Passive Abilities may have a condition under which they apply.
+  + Passive Abilities have an opposite operation. For example, the opposite of adding two health is removing two health.
++ Card States
+  + Card States are attached to cards that are in play. When looking at a property of a card, the state is used instead.
+  + A Card State's initial properties are those of the corresponding card.
+  + A Card State may have Counters. Counters are numbers with names associated to them.
+  + If a card does not have a counter of a certain number, it has zero of it. If a card has zero of a counter, it is also said to not have that counter.
 
 == Processes
 This section defines all processes in Bloodless. When playing a game of Bloodless, the Bloodless process is initiated.
