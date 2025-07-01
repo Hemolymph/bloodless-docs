@@ -62,59 +62,6 @@ Changes in a major version may be labeled "style patches," meaning that the cont
 == Definitions
 This chapter defines all types of values that are used to process a game of Bloodless. The following chapter defines the processes used by the game.
 
-+ Numbers
-  + Natural numbers are defined as the set of positive integers with zero appended.
-  + In Bloodless, a number is a natural number.
-  + Whenever an operation between numbers results in a number outside the natural integers, the result is zero.
-  + "Extended numbers" are natural numbers with positive infinity (#sym.infinity) appended. Positive infinity is defined by the following two properties:
-    + It is greater than every natural number.
-    + It is equal to itself.
-+ Names
-  + In Bloodless, Names are unique objects, which have representations in each language and medium. For example, "Ant Queen" is an English representation of a Name in Bloodless in a written medium.
-  + Every Name has an extended number associated with it, called its Limit. The default Limit for a number is 5.
-+ Card Types
-  + There exist two basic types: Command and Creature.
-  + Blood Flask is a subtype of Creature.
-  + Extended Command is a subtype of Command.
-  + All Creature and Command types have Saga variants.
-  + All non-Vestige types have Vestige variants.
-+ Events
-  + An event represents a change to the state of the game.
-  + When an event is applied, it creates an Outcome. The Outcome may be a Failure or a Success, containing information about all cards and players involved in the event.
-+ Triggered Abilities (TAs)
-  + Event-Modifying Triggered Abilities (EMTAs)
-    + EMTAs have a trigger, which is an Event pattern.
-    + When applied to an event that triggers it, an EMTA will result in a list of new events, defined by the specific EMTA.
-    + When applied to an event that does not trigger it, an EMTA will just result in a list of  only that same event.
-  + Event-Creating Triggered Abilities (ECTAs)
-    + ECTAs have a trigger, which is an Outcome pattern. They also have a Consequence, with is an ordered list of events.
-    + When triggered, they process their Consequence.
-  + For an ability to be triggered, its trigger has to match the event it is being applied to.
-  + Triggers:
-    + TODO! write a list of all triggers
-+ Rules Text
-  + Rules Text is a list of Abilities or a list of Events.
-+ Faces
-  + A Face may have a Name.
-  + A Face may have a Cost. This number may be variable.
-  + A Face may have Health, Defense and Power. These numbers may be variable.
-  + Type Properties
-    + Creatures must have Health, Defense and Power. They also have Combat Targets, which are relative directions to spaces on the board.
-  + Variables
-    + A number in a card may be variable. A variable is represented with a letter from the Latin or Greek alphabet. Variable numbers have two variants: Undefined and Defined. Their default state is Undefined.
-    + All numbers in a card represented with the same letter are the same number.
-    + The Defined variant of a variable number contains a natural integer. The Undefined variant contains no extra structure.
-    + When the value of a number that is variable is needed and that number is in a Defined variant, the number it is Defined with is used.
-    + When the value of a number that is variable is needed and that number is in its Undefined variant, one of the following can happen:
-      + If the same variable appears in the card's Cost, Health, Defense or Power, it is zero.
-      + Otherwise, the player chooses a value for it, following the restrictions specified on the card.
- + A Face may have a Flip Cost. This number may be variable.
-+ Card
-  + A card has a main face, and a back face.
-  + A card's Name, Cost, Flip Cost, Health, Defense and Power are those of its main face.
-  + There exist certain rules that apply only to cards of a certain Type.
-  + While a card is in an owned zone, the owner of that zone is the card's "controller".
-  + A card's owner is the player who controls it when the game begins, or when it is created.
 + Lists
   + A list is a collection of various things of the same kind.
   + Unordered Lists
@@ -125,11 +72,71 @@ This chapter defines all types of values that are used to process a game of Bloo
     + Adding an item to the "front" of an ordered list adds 1 to all existing indexes and adds the new element with 0 as its index.
     + Adding an item at a specific index adds 1 to all indexes greater than or equal to the desired index, then puts the element at that index.
     + An ordered list can be shuffled, which consists of moving all elements to another index at random, respecting rule @sortedListRule.
++ Numbers
+  + Natural numbers are defined as the set of positive integers with zero appended.
+  + In Bloodless, a number is a natural number.
+  + Whenever an operation between numbers results in a number outside the natural integers, the result is zero.
+  + "Extended numbers" are natural numbers with positive infinity (#sym.infinity) appended. Positive infinity is defined by the following two properties:
+    + It is greater than every natural number.
+    + It is equal to itself.
+  + Variables
+    + A variable represents a number which may be Undefined.
+    + In print, a variable is represented with a letter from the Latin or Greek alphabet. Variable numbers have two variants: Undefined and Defined. Their default state is Undefined.
+    + The Defined variant contains a number. The Undefined variant contains no extra structure.
+    + When the value of a number that is variable is needed and that number is in a Defined variant, the number it is Defined with is used.
+    + When the value of a number that is variable is needed and that number is in its Undefined variant, it is zero.
++ Names
+  + In Bloodless, Names are unique objects, which have representations in each language and medium.#linebreak()
+    *Example*
+    - "Ant Queen" is an English representation of a Name in Bloodless in a written medium.
+    - "Hormiga Reina" is a representation of _the exact same name_, in different languages and mediums.
+  + Every Name has an extended number associated with it, called its Limit. The default Limit for a name is 5.
++ Card Types
+  + There exist two basic types: Command and Creature.
+  + There exist _variants_ of types. These are considered the same type as the type they are a variant of, but not the other way around.#linebreak()
+    *Examples*
+    - "Extended Command Saga" is also considered an "Extended Command."
+    - "Extended Command" is also considered a "Command."
+    - "Creature" is *not* also considered a "Creature Saga."
+    
+  + Blood Flask is a variant of Creature.
+  + Extended Command is a variant of Command.
+  + All Creature and Command types have Saga variants.
+  + All non-Vestige types have Vestige variants.
++ Events
+  + An event represents a change to the state of the game.
+  + When an event is applied, it creates an Outcome. The Outcome may be a Failure or a Success containing information about all cards and players involved in the event.
++ Abilities
+  + Event-Modifying Triggered Abilities (EMTAs)
+    + EMTAs have a trigger, which is an Event pattern.
+    + When applied to an event that triggers it, an EMTA will result in a list of new events, defined by the specific EMTA.
+    + When applied to an event that does not trigger it, an EMTA will just result in a list of  only that same event.
+  + Event-Creating Triggered Abilities (ECTAs)
+    + ECTAs have a trigger, which is an Outcome pattern. They also have a Consequence, with is an ordered list of events.
+    + When triggered, they process their Consequence.
+  + Passive Abilities
+    + A Passive Ability modifies the state of a card as long as a condition is met, and undoes it when the condition is unmet.
+    + In order to achieve this, a Passive Ability remembers the specific state change for everything that it modifies, if it has.
+    + Passive Abilities have an opposite operation. For example, the opposite of adding two health is removing two health.
++ Rules Text
+  + Rules Text, despite being called Text, is not actually a string of characters, but a list of either Abiliites or Events.
++ Faces
+  + A Face may have a Name.
+  + A Face may have a Cost. This number may be variable.
+  + Type Properties
+    + Creatures must have Health, Defense and Power, all of which may be variable. They also have Combat Targets, which are relative directions to spaces on the board.
+ + A Face may have a Flip Cost. This number may be variable.
++ Card
+  + A card has a main face, and a back face.
+  + A card's Name, Cost, Flip Cost, Health, Defense and Power are those of its main face.
+  + There exist certain rules that apply only to cards of a certain Type.
+  + While a card is in an owned zone, the owner of that zone is the card's "controller".
+  + A card's owner is the player who controls it when the game begins, or when it is created.
 + Places
   + A Place is a location where a card may be. A place may have at most one card.
   + All Places have an owner.
   + Places are also linked by Zones. All spaces in a Zone have defined collective behavior with one another.
-    + Discard Pile: An unordered list of cards.
+    + Discard Pile: An unordered list of places.
     + Board
       + The Board consists of 8 places, called spaces, in a 4x2 grid. Each player owns one row.
       + Only cards of Creature type may be on the spaces of the Board.
@@ -145,10 +152,6 @@ This chapter defines all types of values that are used to process a game of Bloo
     + Spawning, summoning, moving to board, where "creature" includes (but is not exclusive to) "creature cards".
     + Executing, moving to timeline, where "command" includes (but is not exclusive to) "command cards".
     + Playing, where "command" and "creature" include (but are not exclusive to) "command card" and "creature card" respectively.
-+ Passive Abilities
-  + A Passive Ability modifies the state of a card as long as a condition is met, and undoes it when the condition is unmet.
-  + In order to achieve this, a Passive Ability remembers the specific state change for everything that it modifies, if it has.
-  + Passive Abilities have an opposite operation. For example, the opposite of adding two health is removing two health.
 + Card States
   + Card States are attached to cards that are in play. When looking at a property of a card, the state is used instead.
   + A Card State's initial properties are those of the corresponding card.
@@ -165,9 +168,13 @@ When a process moves to a step, that step is immediately executed, even if a chi
 + Applying Events
   + The outcome of an event contains the same information as the event itself. However, if the event contains patterns, the outcome will contain definite information. (e.g. a specific card instead of a card pattern).
   + Move
-    + Contains a card pattern and a zone pattern.
-    + Removes a matching card from whatever zone it's in and moves a matching zone.
-    + Outcome additionally contains the zone the card moved from.
+    + This event contains a card pattern (`target_card`), a place pattern (`target_place`), and an optional player pattern (`done_by`).
+    + Let `card` be a match of `target_card`. This event fails if a match cannot be found.
+    + Let `place` be a match of `target_place`. This event fails if a match cannot be found.
+    + Let `by` be a match of `done_by` if there is a pattern. This event fails if a match cannot be found.
+    + Let `from` be the place that `card` is in.
+    + Move `card` to `place`
+    + This event's Success contains `card`, `place` and `from`.
   + Play
     + Contains a card pattern to a command, a player pattern, an optional blood cost, an optional space on the board.
     + Player defines all the variable numbers present in the card's Cost.
