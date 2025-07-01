@@ -25,7 +25,7 @@
   #set align(horizon + center)
   
   = The Comprehensive Rules of Bloodless
-  Draft: 4.0.0
+  Draft: 5.0.0
 
 
   #set align(bottom)
